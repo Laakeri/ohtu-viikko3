@@ -1,19 +1,21 @@
 package ohtu;
 
+import java.util.List;
+
 public class Submission {
     private int week;
-
-    public void setWeek(int week) {
-        this.week = week;
-    }
+    private int hours;
+    private List<Integer> exercises;
 
     public int getWeek() {
         return week;
     }
-
-    @Override
-    public String toString() {
-        return ""+week;
+    
+    public int getHours() {
+        return hours;
     }
     
+    public List<Integer> getExercises() {
+        return exercises;
+    }
 }
