@@ -36,4 +36,14 @@ public class Stepdefs {
     public void system_will_respond_with(String expectedOutput) throws Throwable {
         assertTrue(io.getPrints().contains(expectedOutput));
     }
+    
+    @Given("^command new user is selected$")
+    public void command_new_selected() {
+        inputLines.add("new");
+    }
+    
+    @Given("^user \"([^\"]*)\" with password \"([^\"]*)\" is created$")
+    public void user_is_created(String username, String password) {
+        auth.createUser(username, password);
+    }
 }
