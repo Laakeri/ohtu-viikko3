@@ -4,6 +4,7 @@ public class CourseInfo {
     private String name;
     private String term;
     private int[] exercises;
+    int week;
     
     public String getName() {
         return name;
@@ -15,5 +16,9 @@ public class CourseInfo {
     
     public int getExerciseMax(int week) {
         return exercises[week - 1];
+    }
+    
+    public int getWeek() {
+        return week;
     }
 }

@@ -4,6 +4,9 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import org.apache.http.client.fluent.Request;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 public class Main {
     
     private static <T> T getFromUrl(String url, Class<T> classOfT) throws IOException {
@@ -54,5 +57,22 @@ public class Main {
             totalHours += sub.getHours();
         }
         System.out.print("\nyhteensä: " + totalExercises + " tehtävää " + totalHours + " tuntia\n");
+        
+        String statsUrl = "https://studies.cs.helsinki.fi/ohtustats/stats";
+        String statsResponse = Request.Get(statsUrl).execute().returnContent().asString();
+        JsonParser parser = new JsonParser();
+        JsonObject parsed = parser.parse(statsResponse).getAsJsonObject();
+        
+        int totalSubmits = 0;
+        int totalSubmitExercises = 0;
+        for (int week = 1; week <= courseInfo.getWeek(); week++) {
+            if (parsed.has(String.valueOf(week))) {
+                JsonObject weekJ = parsed.getAsJsonObject(String.valueOf(week));
+                totalSubmits += weekJ.getAsJsonPrimitive("students").getAsInt();
+                totalSubmitExercises += weekJ.getAsJsonPrimitive("exercise_total").getAsInt();
+            }
+        }
+        
+        System.out.println("kurssilla yhteensä " + totalSubmits + " palautusta, palautettuja tehtäviä " + totalSubmitExercises + " kpl");
     }
 }
