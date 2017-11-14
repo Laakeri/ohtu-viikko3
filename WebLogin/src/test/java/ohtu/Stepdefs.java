@@ -80,6 +80,26 @@ public class Stepdefs {
         pageHasContent("Give your credentials to login");
     }     
     
+    private void gotoRegisterpageAndRegister(String username, String password) {
+        driver.get(baseUrl);
+        WebElement element = driver.findElement(By.linkText("register new user"));
+        element.click();
+        registerWith(username, password, password);
+    }
+    
+    @Given("^user with username \"([^\"]*)\" with password \"([^\"]*)\" is successfully created$")
+    public void user_with_username_with_password_is_successfully_created(String username, String password) throws Throwable {
+        gotoRegisterpageAndRegister(username, password);
+        pageHasContent("Welcome to Ohtu Application!");
+    }
+
+    @Given("^user with username \"([^\"]*)\" and password \"([^\"]*)\" is tried to be created$")
+    public void user_with_username_and_password_is_tried_to_be_created(String username, String password) throws Throwable {
+        gotoRegisterpageAndRegister(username, password);
+        pageHasContent("Create username and give password");
+    }
+
+    
     @After
     public void tearDown(){
         driver.quit();
