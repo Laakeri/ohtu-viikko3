@@ -4,3 +4,6 @@
 /HelloCucumber/build/
 /HelloCucumber/.nb-gradle/
 /HelloCucumber/.gradle/
+/LoginCucumber/.nb-gradle/
+/LoginCucumber/build/
+/LoginCucumber/.gradle/
