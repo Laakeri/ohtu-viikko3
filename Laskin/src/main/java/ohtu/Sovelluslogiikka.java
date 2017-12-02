@@ -19,4 +19,8 @@ public class Sovelluslogiikka {
     public int tulos() {
         return tulos;
     }
+    
+    public void setValue(int tulos) {
+        this.tulos = tulos;
+    }
 }

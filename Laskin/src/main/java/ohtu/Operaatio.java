@@ -6,6 +6,7 @@ public abstract class Operaatio implements Komento {
     protected Sovelluslogiikka sovellus;
     protected JTextField tuloskentta;
     protected JTextField syotekentta;
+    private int previousValue = 0;
     
     public Operaatio(Sovelluslogiikka sovellus, JTextField tuloskentta, JTextField syotekentta) {
         this.sovellus = sovellus;
@@ -20,6 +21,7 @@ public abstract class Operaatio implements Komento {
     }
     
     public void suorita() {
+        previousValue = sovellus.tulos();
         int arvo = 0;
         try {
             arvo = Integer.parseInt(syotekentta.getText());
@@ -29,5 +31,9 @@ public abstract class Operaatio implements Komento {
         nayta();
     }
     protected abstract void laske(int arvo);
-    public abstract void peru();
+    
+    public void peru() {
+        sovellus.setValue(previousValue);
+        nayta();
+    }
 }

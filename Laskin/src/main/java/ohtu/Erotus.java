@@ -11,9 +11,4 @@ public class Erotus extends Operaatio {
     public void laske(int arvo) {
         sovellus.miinus(arvo);
     }
-    
-    @Override
-    public void peru() {
-        
-    }
 }

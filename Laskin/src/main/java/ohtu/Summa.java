@@ -11,9 +11,4 @@ public class Summa extends Operaatio {
     public void laske(int arvo) {
         sovellus.plus(arvo);
     }
-    
-    @Override
-    public void peru() {
-        
-    }
 }

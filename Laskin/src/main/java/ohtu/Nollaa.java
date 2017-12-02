@@ -11,9 +11,4 @@ public class Nollaa extends Operaatio {
     public void laske(int arvo) {
         sovellus.nollaa();
     }
-    
-    @Override
-    public void peru() {
-        
-    }
 }
